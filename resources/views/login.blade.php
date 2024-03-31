@@ -9,7 +9,7 @@
 
 <div id="form">
 <div class="logo">
-<h1 class="text-center head">SISTEM INFORMASI ADMINISTRASI</h1>
+<h1 class="text-center head">SISTEM INFORMASI ADMINISTRASI SEKOLAH</h1>
 <form action="" method="post">
     @csrf
 </div>
