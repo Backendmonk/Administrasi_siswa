@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControllerSiswa;
 use App\Http\Controllers\DataAdminController;
 use App\Http\Controllers\DataGuruController;
 use App\Http\Controllers\DataMuridConttroller;
@@ -19,8 +20,12 @@ use Illuminate\Support\Facades\Route;
 
 Route :: middleware(['guest'])->group(function(){
 
-        Route::get('/',[Sesicontroller::class,'index']);
+        Route::get('/',[Sesicontroller::class,'index'])->name('login');
         Route::post('/',[Sesicontroller::class,'login']);
+});
+
+Route::get('/home',function(){
+        return redirect('/Admin/index');
 });
 
 Route::get('/logout',[Sesicontroller::class,'logout']);
@@ -34,6 +39,15 @@ Route::middleware(['auth'])->group(function(){
                  Route::controller(DataAdminController::class)->group(function(){
                         Route::Get('/Admin/index','index');
                         
+                });
+
+                Route::controller(ControllerSiswa::class)->group(function(){
+
+                        Route::get('/adm/siswabaru','index');
+                        route::get('/adm/muridbaru_view','dirrectsiswaBaru');
+                        route::post('/adm/inputdata','sumitdatasiswa');
+                        route::get('/adm/delete_siswa/{NIDN}','hapusiswabaru');
+
                 });
 
         });

@@ -11,11 +11,11 @@
                     </a>
                     
                     <div class="sb-sidenav-menu-heading">Menus</div>
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link" href="/adm/siswabaru">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Siswa Baru
                     </a>
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="/adm/datasiswa">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Data Siswa
                     </a>

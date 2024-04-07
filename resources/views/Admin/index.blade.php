@@ -7,4 +7,7 @@
 @section('isi')
     
     Admin Page
+
+    </div>
+
 @endsection

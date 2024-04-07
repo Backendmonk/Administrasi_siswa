@@ -9,10 +9,21 @@
 
 <div id="form">
 <div class="logo">
-<h1 class="text-center head">SISTEM INFORMASI ADMINISTRASI SEKOLAH</h1>
+<h1 class="text-center head">SISTEM INFORMASI ADMINISTRASI</h1>
 <form action="" method="post">
     @csrf
 </div>
+@if ($errors->any())
+<div class="alert alert-danger">
+	<ul>
+
+		@foreach ($errors->all() as $item)
+				<li>{{$item}}</li>
+		@endforeach
+	</ul>
+</div>
+
+@endif
 		<div class="form-item">
 			<p class="formLabel">Email</p>
 			<input type="email" name="email" id="email" class="form-style" autocomplete="off"/>
