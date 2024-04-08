@@ -47,6 +47,8 @@ Route::middleware(['auth'])->group(function(){
                         route::get('/adm/muridbaru_view','dirrectsiswaBaru');
                         route::post('/adm/inputdata','sumitdatasiswa');
                         route::get('/adm/delete_siswa/{NIDN}','hapusiswabaru');
+                        route::get('/adm/editSiswa/{NIDN}','editsiswa');
+                        route::put('/adm/updatesiswa','updatedatasiswa');
 
                 });
 

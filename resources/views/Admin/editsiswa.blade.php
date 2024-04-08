@@ -21,59 +21,82 @@
                 <div class="card mb-5">
                 <div class="card-body">
                     
-                    <form action="/adm/inputdata" method="POST">
+                    <form action="/adm/updatesiswa" method="POST">
                         @csrf
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">NIDN</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1"  name = "nidn">
-                          </div>
+                        @method('PUT')
 
+                        <input type="text" hidden  name = "nidn" value={{$nidn}}>
                           <div class="form-group">
                             <label for="exampleInputPassword1">Nama</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1"  name = "nama">
+                            <input type="text" class="form-control" id="exampleInputPassword1" value = {{$nama}}  name = "nama">
                           </div>
 
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="email">
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value = {{$email}}  name="email">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tanggal Lahir</label>
-                            <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name = "tgllahir">
+                            <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value = {{date('Y-m-d',strtotime($tgl))}}   name = "tgllahir">
                           </div>
 
                           <div class="form-group">
                             <label for="exampleInputEmail1">Jenis Kelamin</label>
+                            @if ($jk =="Laki-Laki")
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jk" id="exampleRadios1" value="laki-laki" checked>
+                                <input class="form-check-input" type="radio" name="jk" id="exampleRadios1" value="laki-laki" checked >
                                 <label class="form-check-label" for="exampleRadios1">
                                  Laki-Laki
                                 </label>
                               </div>
+
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jk" id="exampleRadios2" value="perempuan">
+                                <input class="form-check-input" type="radio" name="jk" id="exampleRadios2" value="perempuan" >
                                 <label class="form-check-label" for="exampleRadios2">
                                   Perempuan
                                 </label>
                               </div>
+                              @endif
+                            
+                        
+                            @if ($jk =="Perempuan")
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="jk" id="exampleRadios1" value="laki-laki"  >
+                                <label class="form-check-label" for="exampleRadios1">
+                                 Laki-Laki
+                                </label>
+                              </div>
+
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="jk" id="exampleRadios2" value="perempuan" checked>
+                                <label class="form-check-label" for="exampleRadios2">
+                                  Perempuan
+                                </label>
+                            </div>
+                                
+                           
+                            @endif
+                           
+
+                             
                           </div>
 
 
                           <div class="form-group">
                             <label for="exampleInputEmail1">Asal Sekolah</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="asalsklh" >
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="asalsklh" value = "asal_sekolah" >
                           </div>
 
                           <div class="form-group">
                             <label for="exampleInputEmail1">Alamat</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="alamat" >
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="alamat" value = "alamat">
                           </div>
 
                           <div class="form-group">
                             <label for="exampleInputEmail1">Seleksi</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="seleksi" id="exampleRadios1" value="ujian" checked>
+                                <input class="form-check-input" type="radio" name="seleksi" id="exampleRadios1" value="ujian" >
                                 <label class="form-check-label" for="exampleRadios1">
                                  Ujian Entah
                                 </label>
@@ -88,12 +111,12 @@
 
                           <div class="form-group">
                             <label for="exampleInputEmail1">Nama Orang Tua</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="namaOrtu" >
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="namaOrtu" value = "nama_orangtua">
                           </div>
 
                           <div class="form-group">
                             <label for="exampleInputEmail1">Pekerjaan Orang Tua</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="pekerjaanortu" >
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="pekerjaanortu" value = "pekerjaanortu">
                           </div>
 
 
