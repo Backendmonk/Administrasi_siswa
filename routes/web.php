@@ -4,6 +4,7 @@ use App\Http\Controllers\ControllerSiswa;
 use App\Http\Controllers\DataAdminController;
 use App\Http\Controllers\DataGuruController;
 use App\Http\Controllers\DataMuridConttroller;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\Sesicontroller;
 use Illuminate\Support\Facades\Route;
 
@@ -52,11 +53,17 @@ Route::middleware(['auth'])->group(function(){
 
                 });
 
+
+                Route::controller(KelasController::class)->group(function(){
+                        route::get('/adm/datasiswa','index');
+                        route::get('/adm/kelassAdd','tambahdatakelas');
+                });
+
         });
 
 
 
-
+        /////////////////////////////////////////////////////////////
 
         Route::middleware(['userakses:Guru'])->group(function(){
 
@@ -67,7 +74,7 @@ Route::middleware(['auth'])->group(function(){
         });
 
 
-        
+        ////////////////////////////////////////////////////////////////
         Route::middleware(['userakses:Murid'])->group(function(){
 
                 //controller route funcion
