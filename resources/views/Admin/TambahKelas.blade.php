@@ -58,7 +58,7 @@
             @csrf
             <div class="form-group">
               <label for="exampleInputEmail1">Nomor Kelas</label>
-              <select class="form-control form-control-lg">
+              <select name ="nomorkelas" class="form-control form-control-lg">
                 <option value="null">--Pilih Grade Kelas--</option>
                 @for ($i = 7; $i < 10; $i++)
                 
@@ -70,7 +70,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Kode Kelas</label>
-              <select class="form-control form-control-lg">
+              <select name = "kodekelas" class="form-control form-control-lg">
                 <option value="null">--Pilih Kode Kelas--</option>
                 <option value ="A" >A</option>  
                 <option value ="B" >B</option>  

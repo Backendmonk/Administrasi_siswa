@@ -52,11 +52,26 @@
     @endif
     <br>
     <form action="/adm/kelassAdd" method="get">
-            <button type="submit" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i>Tambah Kelas</button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-building" aria-hidden="true"></i> Tambah Kelas</button>
     </form>
     <br>
     <br>
     <main>
+        <div class="row">
+        @foreach ($DataKelas as $data)
+
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body"><center>Kelas : {{$data->nama_kelas}}</center></div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="/adm/tambahSiswaKelas">Tambah Siswa</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+            
+        @endforeach
+    </div>
       
     
   
