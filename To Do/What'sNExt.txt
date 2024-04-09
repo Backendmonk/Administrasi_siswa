@@ -1,0 +1,4 @@
+- input siswa pada db siswa kelas
+- coba hubungkan table antara siswa, kelas 
+- Buat update diri admin
+- Buat menu untuk menambah data guru ( salin dari siswa, tb_yangdigunakan User)
