@@ -77,6 +77,20 @@
                 <option value ="C" >C</option>              
               </select>
             </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">Wali Kelas</label>
+                <select name = "walikelas" class="form-control form-control-lg">
+                  <option value="null">--Pilih Wali Kelas--</option>
+                  @foreach ($dataguru as $data)
+                        @if ($data->role == "Guru")
+                        <option value="{{$data->id}}">{{$data->id}}-{{$data->name}}</option>
+                        @endif
+                      
+                  @endforeach              
+                </select>
+              </div>
+
             <br>
             <button type="submit" class="btn btn-primary">Simpan</button>
             <button type="button" onclick="window.location='/adm/datasiswa'" class="btn btn-primary" >Kembali</button>

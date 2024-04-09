@@ -54,8 +54,8 @@
    <br>
     <main>
 
-        <form method = "POST" action ="/adm/prosessiswakelas">
-            @csrf
+        
+        
                 
             <div class="card-body">
                 <table id="datatablesSimple">
@@ -67,34 +67,31 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                       
                         
                         @foreach ($datasiswa as $data)
+                          
                         <tr>
                             <td>{{$data->NIDN}}</td>
                             <td>{{$data->nama}}</td>
-                            <td><div class="form-check">
-                                <input class="form-check-input" name = "siswa" type="checkbox" value="{{$data->NIDN}}" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
-                              </div></td>
+                            <td>  <button type="submit" class = "btn btn-primary"> <i class = "fa fa-add"></i> Tambah Siswa</button>
+                            </td>
                            
                         </tr>
                         @endforeach
+                        
                        
                        
                     </tbody>
                 </table>
                 
-                <button type="submit" class = "btn btn-primary"> Simpan</button>
+              
            
        
             </div>
            
             
             
-        </form>
+    
       
     
   
