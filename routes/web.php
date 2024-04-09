@@ -58,6 +58,8 @@ Route::middleware(['auth'])->group(function(){
                         route::get('/adm/datasiswa','index');
                         route::get('/adm/kelassAdd','tambahdatakelas');
                         route::Post('/adm/proseskelas','addkelasproses');
+                        route::get('/adm/tambahSiswaKelas/{id}','tambahsiswakeKelas');
+                        route::post('/adm/prosessiswakelas','prosessiswakelas');
                 });
 
         });

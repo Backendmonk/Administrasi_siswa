@@ -60,7 +60,7 @@
               <label for="exampleInputEmail1">Nomor Kelas</label>
               <select name ="nomorkelas" class="form-control form-control-lg">
                 <option value="null">--Pilih Grade Kelas--</option>
-                @for ($i = 7; $i < 10; $i++)
+                @for ($i = 1; $i < 10; $i++)
                 
                 <option value ="{{$i}}" >{{$i}}</option>
                     

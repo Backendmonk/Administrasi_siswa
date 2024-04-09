@@ -18,5 +18,5 @@ class Modelkelas extends Model
 
     public $timestamps = false;
 
-    public $incrementing = true;
+    public $incrementing = false;
 }

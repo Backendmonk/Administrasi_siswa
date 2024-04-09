@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Modelkelas;
+use App\Models\ModelUserBaru;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -12,7 +13,7 @@ class KelasController extends Controller
     public function index(){
         $reqdata = [
 
-            'DataKelas'=>Modelkelas::all(),
+            'DataKelas'=>Modelkelas::orderby('id')->get(),
         ];
 
         return view('Admin.datasiswa',$reqdata);
@@ -46,5 +47,29 @@ class KelasController extends Controller
 
             return redirect('/adm/datasiswa')->with('error','Data Gagal Ditambah');
         }
+    }
+
+
+    public function tambahsiswakeKelas($id){
+        // buat variable untuk menampung semua field dan data yang ada pada table kelas
+        $Getkelas = Modelkelas::find($id);
+
+        //buat array untuk menampung banyak variable yang akan di pass ke view
+        $arrayDataSiswaKelas = [
+                //variable untuk memanggil semua field table siswa
+                'datasiswa' => ModelUserBaru::all(),
+                //memanggil id kelas pada variable Getkelas (yang menampung Field table kelas)
+                'idkelas'=> $Getkelas->id,
+        ];
+
+        return View('Admin.TambahSiswaKelas',$arrayDataSiswaKelas);
+    }
+
+
+    public function prosessiswakelas(request $reqinputkelas){
+
+        $isi = $reqinputkelas->siswa;
+
+        var_dump($isi);
     }
 }
