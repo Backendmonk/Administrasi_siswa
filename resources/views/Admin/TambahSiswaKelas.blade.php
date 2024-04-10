@@ -54,6 +54,17 @@
    <br>
     <main>
 
+        <h5>Wali Kelas : {{$namaguru}}</h5>
+        <br>
+
+        <form action="/adm/editkelas/{{$idkelas}}" method="GET">
+            @csrf
+           
+            
+            <button type="submit" class="btn btn-warning">Edit</button>
+            
+        </form>
+        <br>
         
         
                 

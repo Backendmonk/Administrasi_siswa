@@ -46,7 +46,7 @@
                           <div class="form-group">
                             <label for="exampleInputEmail1">Jenis Kelamin</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jk" id="exampleRadios1" value="laki-laki" checked>
+                                <input class="form-check-input" type="radio" name="jk" id="exampleRadios1" value="laki-laki" >
                                 <label class="form-check-label" for="exampleRadios1">
                                  Laki-Laki
                                 </label>
@@ -73,15 +73,15 @@
                           <div class="form-group">
                             <label for="exampleInputEmail1">Seleksi</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="seleksi" id="exampleRadios1" value="ujian" checked>
+                                <input class="form-check-input" type="radio" name="seleksi" id="exampleRadios1" value="Mandiri" >
                                 <label class="form-check-label" for="exampleRadios1">
-                                 Ujian Entah
+                                Mandiri
                                 </label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="seleksi" id="exampleRadios2" value="dunno">
+                                <input class="form-check-input" type="radio" name="seleksi" id="exampleRadios2" value="Reguler">
                                 <label class="form-check-label" for="exampleRadios2">
-                                 I Dunno
+                                 Reguler
                                 </label>
                               </div>
                           </div>

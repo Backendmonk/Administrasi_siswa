@@ -60,6 +60,8 @@ Route::middleware(['auth'])->group(function(){
                         route::Post('/adm/proseskelas','addkelasproses');
                         route::get('/adm/tambahSiswaKelas/{id}','tambahsiswakeKelas');
                         route::post('/adm/prosessiswakelas','prosessiswakelas');
+                        route::get('/adm/editkelas/{idkelas}','editkelasview');
+                        route::post('/adm/proseseditkelas','proseseditkelas');
                 });
 
         });

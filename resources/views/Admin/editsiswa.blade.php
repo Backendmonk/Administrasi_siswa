@@ -85,38 +85,38 @@
 
                           <div class="form-group">
                             <label for="exampleInputEmail1">Asal Sekolah</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="asalsklh" value = "asal_sekolah" >
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="asalsklh" value = "{{$asal_sekolah}}" >
                           </div>
 
                           <div class="form-group">
                             <label for="exampleInputEmail1">Alamat</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="alamat" value = "alamat">
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="alamat" value = "{{$alamat}}">
                           </div>
 
                           <div class="form-group">
                             <label for="exampleInputEmail1">Seleksi</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="seleksi" id="exampleRadios1" value="ujian" >
+                                <input class="form-check-input" type="radio" name="seleksi" id="exampleRadios1" value="Mandiri" >
                                 <label class="form-check-label" for="exampleRadios1">
-                                 Ujian Entah
+                                 Mandiri
                                 </label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="seleksi" id="exampleRadios2" value="dunno">
+                                <input class="form-check-input" type="radio" name="seleksi" id="exampleRadios2" value="Reguler">
                                 <label class="form-check-label" for="exampleRadios2">
-                                 I Dunno
+                                 Reguler
                                 </label>
                               </div>
                           </div>
 
                           <div class="form-group">
                             <label for="exampleInputEmail1">Nama Orang Tua</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="namaOrtu" value = "nama_orangtua">
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="namaOrtu" value = "{{$nama_orangtua}}">
                           </div>
 
                           <div class="form-group">
                             <label for="exampleInputEmail1">Pekerjaan Orang Tua</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="pekerjaanortu" value = "pekerjaanortu">
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="pekerjaanortu" value = "{{$pekerjaanortu}}">
                           </div>
 
 

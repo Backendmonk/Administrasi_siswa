@@ -80,11 +80,54 @@ class KelasController extends Controller
                 'datasiswa' => ModelUserBaru::all(),
                 //memanggil id kelas pada variable Getkelas (yang menampung Field table kelas)
                 'idkelas'=> $Getkelas->id,
+                'namaguru'=>$Getkelas->Nama_wali,
         ];
 
         return View('Admin.TambahSiswaKelas',$arrayDataSiswaKelas);
     }
 
+
+    public function editkelasview($idkelas){
+
+            $dataEdit = [
+
+                'Dataguru' =>User::Where('role','=','Guru')->get(),
+                'idkelas'=> $idkelas,
+            ];
+
+            return view('Admin.editkelas',$dataEdit);
+    }
+
+    public function proseseditkelas(Request $reqinputeditKelas){
+
+        $idguru = $reqinputeditKelas->walikelas;
+        $idkelas = $reqinputeditKelas->idkelas;
+
+        $dataguru = user::find($idguru);
+
+        $namaguruGet = [
+            'nama'=>$dataguru->name
+        ];
+
+        $namaguru = $namaguruGet['nama'];
+        if ($idguru == "null") {
+            return redirect()->back()->with('error','Pilih Data Wali');
+        }else{
+            try {
+
+                $updatedata = Modelkelas::find($idkelas);
+                $updatedata->id_wali = $idguru;
+                $updatedata->nama_wali = $namaguru;
+
+                $updatedata->save();
+                return redirect('/adm/tambahSiswaKelas/'.$idkelas)->with('message','Data Berhasil Terupdate');
+
+                //code...
+            } catch (\Throwable $th) {
+                return redirect()->back()->with('error','Gagal Update');
+            }
+        }
+    }
 
     public function prosessiswakelas(request $reqinputkelas){
 
