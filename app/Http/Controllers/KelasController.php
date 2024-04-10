@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Modelkelas;
+use App\Models\ModelKelasSiswa;
 use App\Models\ModelUserBaru;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -81,7 +82,10 @@ class KelasController extends Controller
                 //memanggil id kelas pada variable Getkelas (yang menampung Field table kelas)
                 'idkelas'=> $Getkelas->id,
                 'namaguru'=>$Getkelas->Nama_wali,
+                'SiswaSudahDikelas'=>ModelKelasSiswa::where('kode_kelas','=',$id)->get(),
         ];
+
+      
 
         return View('Admin.TambahSiswaKelas',$arrayDataSiswaKelas);
     }
@@ -131,8 +135,27 @@ class KelasController extends Controller
 
     public function prosessiswakelas(request $reqinputkelas){
 
-        $isi = $reqinputkelas->siswa;
+        $nidn = $reqinputkelas->nidn;
+        $nama = $reqinputkelas->namasiswa;
+        $idkelas = $reqinputkelas->idkelas;
 
-        var_dump($isi);
+       
+        try {
+                $inputkelassiswa = New ModelKelasSiswa;
+
+                $inputkelassiswa->kode_kelas = $idkelas;
+                $inputkelassiswa->NIDN = $nidn;
+                $inputkelassiswa->nama_siswa = $nama;
+
+                $inputkelassiswa->save();
+                return redirect('/adm/tambahSiswaKelas/'.$idkelas)->with('message','Data Berhasil Ditambah');
+
+
+        
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error','Gagal Ditambah');
+        }
+
+       
     }
 }

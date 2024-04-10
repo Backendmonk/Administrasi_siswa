@@ -84,8 +84,29 @@
                         <tr>
                             <td>{{$data->NIDN}}</td>
                             <td>{{$data->nama}}</td>
-                            <td>  <button type="submit" class = "btn btn-primary"> <i class = "fa fa-add"></i> Tambah Siswa</button>
-                            </td>
+
+                            @if ($SiswaSudahDikelas->NIDN == $data->NIDN)
+                                    <!-- Cari akar masalah dari NIDN yang tidak bisa terbaca -->
+                                <td>Siswa Sudah Terdaftar Dikelas INI</td>
+                                            
+                                @else
+                            <td>
+
+                                <form action="/adm/prosessiswakelas" method = "POST">
+                                    @csrf
+
+                                    <input name = "nidn" type="text" hidden value={{$data->NIDN}}>
+                                    <input type="text" name ="namasiswa" hidden value={{$data->nama}}>
+                                    <input type="text" name = "idkelas" hidden value = {{$idkelas}}>
+
+                                    <button type="submit" class = "btn btn-primary"> <i class = "fa fa-add"></i> Tambah Siswa</button>
+                                </form>
+                            
+                        </td>
+                                            
+                                     
+                                @endif
+                                   
                            
                         </tr>
                         @endforeach
