@@ -73,21 +73,21 @@ class KelasController extends Controller
     public function tambahsiswakeKelas($id){
         // buat variable untuk menampung semua field dan data yang ada pada table kelas
         $Getkelas = Modelkelas::find($id);
-        
 
-        //buat array untuk menampung banyak variable yang akan di pass ke view
+
+            //buat array untuk menampung banyak variable yang akan di pass ke view
         $arrayDataSiswaKelas = [
                 //variable untuk memanggil semua field table siswa
                 'datasiswa' => ModelUserBaru::all(),
                 //memanggil id kelas pada variable Getkelas (yang menampung Field table kelas)
                 'idkelas'=> $Getkelas->id,
                 'namaguru'=>$Getkelas->Nama_wali,
-                'SiswaSudahDikelas'=>ModelKelasSiswa::where('kode_kelas','=',$id)->get(),
-        ];
-
-      
-
-        return View('Admin.TambahSiswaKelas',$arrayDataSiswaKelas);
+                
+                  
+        ];   
+        
+          
+          return View('Admin.TambahSiswaKelas',$arrayDataSiswaKelas);
     }
 
 
@@ -100,6 +100,18 @@ class KelasController extends Controller
             ];
 
             return view('Admin.editkelas',$dataEdit);
+    }
+
+
+    public function datasiswakelasview($id){
+        $kodekelasget = Modelkelas::find($id);
+        $kelasgetarray = [
+
+            'datasiswa' => ModelKelasSiswa::where('kode_kelas','=',$id)->get(),
+            'Kodekelas'=> $kodekelasget->id,
+        ];
+
+        return view('Admin.DatasiswaKelas',$kelasgetarray);
     }
 
     public function proseseditkelas(Request $reqinputeditKelas){
@@ -138,9 +150,12 @@ class KelasController extends Controller
         $nidn = $reqinputkelas->nidn;
         $nama = $reqinputkelas->namasiswa;
         $idkelas = $reqinputkelas->idkelas;
+        
+        $selectsiswa = ModelKelasSiswa::Where('NIDN','=',$nidn)->get()->count();
 
-       
-        try {
+        if ($selectsiswa < 1) {
+            # code...
+            try {
                 $inputkelassiswa = New ModelKelasSiswa;
 
                 $inputkelassiswa->kode_kelas = $idkelas;
@@ -155,6 +170,11 @@ class KelasController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error','Gagal Ditambah');
         }
+        }else{
+            return redirect()->back()->with('error','Data Siswa Sudah Memiliki Kelas');
+        }
+       
+       
 
        
     }

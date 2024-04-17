@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\userakses;
+use App\Models\ModelKelasSiswa;
 use App\Models\ModelUserBaru;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -160,6 +162,8 @@ class ControllerSiswa extends Controller
 
         try {
             ModelUserBaru::find($NIDN)->delete();
+            user::find($NIDN)->delete();
+            ModelKelasSiswa::where('NIDN','=',$NIDN)->delete();
             return redirect('/adm/siswabaru')->with('delete','Data Berhasil Dihapus');
       
         } catch (\Throwable $th) {

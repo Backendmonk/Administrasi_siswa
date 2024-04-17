@@ -62,6 +62,7 @@ Route::middleware(['auth'])->group(function(){
                         route::post('/adm/prosessiswakelas','prosessiswakelas');
                         route::get('/adm/editkelas/{idkelas}','editkelasview');
                         route::post('/adm/proseseditkelas','proseseditkelas');
+                        route::get('/adm/datasiswakelas/{id}','datasiswakelasview');
                 });
 
         });

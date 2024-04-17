@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('judul')
-    Data Siswa
+    Data Siswa Kelas {{$Kodekelas}}
 @endsection
 
 @section('isi')
@@ -54,16 +54,7 @@
    <br>
     <main>
 
-        <h5>Wali Kelas : {{$namaguru}}</h5>
-        <br>
 
-        <form action="/adm/editkelas/{{$idkelas}}" method="GET">
-            @csrf
-           
-            
-            <button type="submit" class="btn btn-warning">Edit</button>
-            
-        </form>
         <br>
         
         
@@ -84,21 +75,17 @@
                             
                         <tr>
                             <td>{{$data->NIDN}}</td>
-                            <td>{{$data->nama}}</td>
-                         
-                              
-                        
-                            
+                            <td>{{$data->nama_siswa}}</td>    
                             <td>
 
                                 <form action="/adm/prosessiswakelas" method = "POST">
                                     @csrf
 
                                     <input name = "nidn" type="text" hidden value={{$data->NIDN}}>
-                                    <input type="text" name ="namasiswa" hidden value={{$data->nama}}>
-                                    <input type="text" name = "idkelas" hidden value = {{$idkelas}}>
+                                    <input type="text" name ="namasiswa" hidden value={{$data->nama_siswa}}>
+                                    
 
-                                    <button type="submit" class = "btn btn-primary"> <i class = "fa fa-add"></i> Tambah Siswa</button>
+                                    <button type="submit" class = "btn btn-danger"> <i class = "fa fa-trash"></i> Hapus</button>
                                 </form>
                             
                         </td>
