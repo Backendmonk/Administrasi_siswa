@@ -29,6 +29,18 @@ Route::get('/home',function(){
         return redirect('/Admin/index');
 });
 
+
+//akun tidak aktif
+
+Route::get('/AkunTidakAktif',function(){
+        return view('/AkunTidakAktif');
+});
+
+
+route::get('/testrouteTestroute',function(){
+        return redirect('/');
+});
+
 Route::get('/logout',[Sesicontroller::class,'logout']);
 
 

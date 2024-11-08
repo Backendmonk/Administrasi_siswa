@@ -1,5 +1,5 @@
 - Edit Kelas (done)
-- input siswa pada db siswa kelas(Bermasalah Saat Menampilkan bhwa Siswa sudah ada di kelas)
+- input siswa pada db siswa kelas(Bermasalah Saat Menampilkan bhwa Siswa sudah ada di kelas)(done)
 - coba hubungkan table antara siswa, kelas 
 - Buat update diri admin
 - Buat menu untuk menambah data guru ( salin dari siswa, tb_yangdigunakan User)
