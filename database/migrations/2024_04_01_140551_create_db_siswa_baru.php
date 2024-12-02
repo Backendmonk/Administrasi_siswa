@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('db_siswa_baru', function (Blueprint $table) {
             $table->string('NIDN');
-            $table->string('id_user');
+            $table->string('email');
             $table->string('nama');
-            $table->string('tg_tl');
+            $table->date('tg_tl');
             $table->enum('jeniskelamin',['Laki-Laki','Perempuan'])->default('Laki-Laki');
             $table->string('asal_sekolah');
             $table->string('alamat');
