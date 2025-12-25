@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControllerGuru;
 use App\Http\Controllers\ControllerSiswa;
 use App\Http\Controllers\DataAdminController;
 use App\Http\Controllers\DataGuruController;
@@ -23,11 +24,18 @@ Route :: middleware(['guest'])->group(function(){
 
         Route::get('/',[Sesicontroller::class,'index'])->name('login');
         Route::post('/',[Sesicontroller::class,'login']);
+
+        route::post('/registerAkunAdd',[Sesicontroller::class,'registerAkunAdd']);
 });
 
 Route::get('/home',function(){
         return redirect('/Admin/index');
 });
+
+Route::get('/registerAkun',function(){
+        return view('/registerAkun');
+});
+
 
 
 //akun tidak aktif
@@ -75,6 +83,17 @@ Route::middleware(['auth'])->group(function(){
                         route::get('/adm/editkelas/{idkelas}','editkelasview');
                         route::post('/adm/proseseditkelas','proseseditkelas');
                         route::get('/adm/datasiswakelas/{id}','datasiswakelasview');
+                        
+                });
+
+                Route::controller(ControllerGuru::class)->group(function(){
+
+
+                        route::get('/adm/dataguru','index')->name('dhguru');
+                        route::get('/adm/Guru_account','tambahAkunGuruView');
+                        route::post('/adm/inputdataGuru','inputAkunGuru');
+                        route::get('/toolsAdmin/Guru','manageGuruAccount');
+                        route::post('/adm/inputdataGuruEdited','manageGuruAccountEdited');
                 });
 
         });

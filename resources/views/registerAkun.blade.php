@@ -10,7 +10,7 @@
 <div id="form">
 <div class="logo">
 <h1 class="text-center head">SISTEM INFORMASI ADMINISTRASI</h1>
-<form action="" method="post">
+<form action="/registerAkunAdd" method="post">
     @csrf
 </div>
 @if ($errors->any())
@@ -24,6 +24,10 @@
 </div>
 
 @endif
+<div class="form-item">
+			<p class="formLabel">Nama</p>
+			<input type="text" name="nama" id="nama" class="form-style" autocomplete="off"/>
+		</div>
 		<div class="form-item">
 			<p class="formLabel">Email</p>
 			<input type="email" name="email" id="email" class="form-style" autocomplete="off"/>
@@ -33,9 +37,14 @@
 			<input type="password" name="password" id="password" class="form-style" />
 			
 		</div>
+        <div class="form-item">
+            <p class="formLabel">Konfirmasi Password</p>
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-style" />
 
-		<button type="submit" class="btn btn-primary">Login</button>
-	
+            <br>
+            <button type="submit" class="btn btn-primary">Daftar User</button>
+        
+        
 </div>
 </div>
 </form>

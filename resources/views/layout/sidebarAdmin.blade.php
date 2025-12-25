@@ -5,7 +5,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="/Admin/index">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
@@ -17,8 +17,15 @@
                     </a>
                     <a class="nav-link" href="/adm/datasiswa">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Data Siswa
+                        Data Kelas Siswa
                     </a>
+
+                      <a class="nav-link" href="/adm/dataguru">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        Data Guru
+                    </a>
+
+
                 </div>
             </div>
             <div class="sb-sidenav-footer">
