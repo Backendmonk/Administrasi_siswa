@@ -15,9 +15,9 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Siswa Baru
                     </a>
-                    <a class="nav-link" href="/adm/datasiswa">
+                    <a class="nav-link" href="/adm/dataskelas">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Data Kelas Siswa
+                        Data Kelas 
                     </a>
 
                       <a class="nav-link" href="/adm/dataguru">

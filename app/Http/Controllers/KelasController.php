@@ -18,7 +18,7 @@ class KelasController extends Controller
             'DataKelas'=>Modelkelas::orderby('id')->get(),
         ];
 
-        return view('Admin.datasiswa',$reqdata);
+        return view('Admin.datakelas',$reqdata);
     }
 
     public function tambahdatakelas(){
@@ -51,20 +51,20 @@ class KelasController extends Controller
             try {
                 $inputKelas = NEW Modelkelas;
     
-                $inputKelas->id=$idkelas;
+              
                 $inputKelas->nama_kelas=$idkelas;
                 $inputKelas->id_wali = $idguru;
                 $inputKelas->Nama_wali = $namaguru;
     
     
                 $inputKelas->save();
-                return redirect('/adm/datasiswa')->with('message','Data Berhasil Ditambah');
+                return redirect('/adm/dataskelas')->with('message','Data Berhasil Ditambah');
     
     
             } catch (\Throwable $th) {
                 //throw $th;
     
-                return redirect('/adm/datasiswa')->with('error','Data Gagal Ditambah');
+                return redirect('/adm/dataskelas')->with('error','Data Gagal Ditambah');
             }     
        
     }
