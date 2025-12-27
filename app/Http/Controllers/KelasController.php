@@ -47,14 +47,21 @@ class KelasController extends Controller
         
     //   //  $countid = User::where('id','LIKE',"%{$idguru}%")->count()->get(); (incase digunakan)
 
-    
-            try {
-                $inputKelas = NEW Modelkelas;
+    $cekketersediaanGuru = Modelkelas::where('id_wali',$idguru)
+    ->where('StatusKelas','Aktif')->count();
+
+    if ($cekketersediaanGuru > 0) {
+        # code...
+        return redirect('/adm/dataskelas')->with('error','Guru Sudah Menjadi Wali Kelas. Harap Cek Kembali Apakah Kelas Masih Digunakan ?');
+    }else{
+         try {
+                $inputKelas = NEW Modelkelas();
     
               
                 $inputKelas->nama_kelas=$idkelas;
                 $inputKelas->id_wali = $idguru;
                 $inputKelas->Nama_wali = $namaguru;
+                $inputKelas->StatusKelas = 'Aktif';
     
     
                 $inputKelas->save();
@@ -65,7 +72,11 @@ class KelasController extends Controller
                 //throw $th;
     
                 return redirect('/adm/dataskelas')->with('error','Data Gagal Ditambah');
-            }     
+            }    
+
+    }
+    
+            
        
     }
 

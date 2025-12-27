@@ -59,10 +59,20 @@
     <main>
         <div class="row">
         @foreach ($DataKelas as $data)
-
+            
+      
         <div class="col-xl-3 col-md-6">
-            <div class="card bg-success text-white mb-4">
-                <div class="card-body"><center>Kelas : {{$data->id}}</center></div>
+            @if ($data->StatusKelas == 'NonAktif')
+                 <div class="card bg-secondary text-white mb-4">
+                    
+                        
+            @else
+                      <div class="card bg-success text-white mb-4">   
+                    
+            @endif
+           
+                
+                <div class="card-body"><center>Kelas : {{$data->nama_kelas}} - Status {{ $data->StatusKelas }}</center></div>
                 <div class="card-body"><center>Wali Kelas : {{$data->Nama_wali}}</center></div>
                
                 
@@ -71,7 +81,31 @@
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
-            <div class="card-body"><center><button class = "btn btn-warning" type="button" onclick="window.location='/adm/datasiswakelas/{{$data->id}}'"><i class = "fa fa-users"></i>Data Siswa</button></center></div>
+            <div class="card-body d-flex gap-2">
+            <div class="card-body">
+                
+                <form action="/adm/datasiswakelas/{{$data->id}}" method="get">
+                    @csrf
+                    <button class = "btn btn-warning" type="submit" >
+                <center><i class = "fa fa-users"></i>Data Siswa</button></center></div>
+                </form>
+                @if ($data->StatusKelas == 'NonAktif')
+
+                    @else
+                    <form action="/adm/nonaktifkanKelas" method="get">
+                    @csrf
+                    <input type="text" hidden value="{{ $data->id }}">
+                    <button class = "btn btn-danger" type="submit" >
+                <center><i class = "fa fa-warning"></i>Nonaktifkan Kelas</button></center></div>
+                </form>
+
+                    @endif
+        </div>
+
+        </div>
+        
+
+
         </div>
             
         @endforeach
