@@ -84,6 +84,7 @@ Route::middleware(['auth'])->group(function(){
                         route::post('/adm/proseseditkelas','proseseditkelas');
                         route::get('/adm/datasiswakelas/{id}','datasiswakelasview');
                         route::post('/adm/nonaktifkanKelas','nonaktifkanKelas');
+                        route::post('/adm/hapusKelas','HapusKelas');
                         
                 });
 

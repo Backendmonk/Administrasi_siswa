@@ -211,5 +211,26 @@ class KelasController extends Controller
 
     }
 
+        /**
+         * Hapus kelas
+         *
+         * @param  \Illuminate\Http\Request  $req
+         * @return \Illuminate\Http\Response
+         */
+    public function HapusKelas(Request $req){
+        $idkelas = $req->idkelas;
+
+        $kelas = Modelkelas::find($idkelas);
+        $klsSiswa = ModelKelasSiswa::where('kode_kelas','=',$idkelas)->get();
+
+        $kelas->delete();
+        foreach ($klsSiswa as $item) {
+                $item->delete();
+            }
+        
+        return redirect()->route('kelas')->with('message','Hapus Berhasil');
+
+    }
+
             
 }

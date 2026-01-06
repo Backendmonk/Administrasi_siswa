@@ -107,14 +107,20 @@
                 </div>
 
                 <div class="kelas-footer">
-
-                    <a href="/adm/tambahSiswaKelas/{{ $data->id }}"
-                       class="btn btn-light btn-flat">
+                     @if ($data->StatusKelas != 'NonAktif')
+                        
+                    
+                       <a href="/adm/tambahSiswaKelas/{{ $data->id }}"
+                       class="btn btn-dark btn-flat">
                         <i class="fa fa-user-plus"></i> Tambah Siswa
                     </a>
 
+                    @endif
+
+                  
+
                     <a href="/adm/datasiswakelas/{{ $data->id }}"
-                       class="btn btn-warning btn-flat">
+                       class="btn btn-primary btn-flat">
                         <i class="fa fa-users"></i> Data Siswa
                     </a>
 
@@ -128,6 +134,14 @@
                         </button>
                     </form>
                     @endif
+
+                    <form action="/adm/hapusKelas" method="post">
+                        @csrf
+                        <input type="hidden" name="idkelas" value="{{ $data->id }}">
+                        <button type="submit"
+                                class="btn btn-warning btn-flat w-100">
+                            <i class="fa fa-ban"></i> Hapus
+                        </button>
 
                 </div>
             </div>
