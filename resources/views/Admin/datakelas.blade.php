@@ -1,125 +1,142 @@
 @extends('layout.main')
 
-@section('judul')
-    Data Siswa
-@endsection
+@section('judul', 'Data Siswa')
 
 @section('isi')
-    
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data Siswa Baru</title>
-</head>
-<body>
 
-    @if (session()->has('message'))
-        <script>
-            swal({
-            title: "Sukses!",
-            text:  "{{session()->get('message')}}",
-            icon: "success",
-            button: "Tutup",
-            });
-        </script>
-    @endif
+<style>
+    .kelas-card {
+        border: none;
+        border-radius: 4px; /* kotak, sedikit saja */
+        height: 100%;
+        transition: transform 0.2s ease;
+    }
 
+    .kelas-card:hover {
+        transform: translateY(-3px);
+    }
 
-    
-    @if (session()->has('delete'))
-        <script>
-            swal({
-            title: "Sukses",
-            text:  "{{session()->get('delete')}}",
-            icon: "success",
-            button: "Tutup",
-            });
-        </script>
-    @endif
+    .kelas-card.aktif {
+        background: #198754;
+        color: #fff;
+    }
 
-    @if (session()->has('error'))
-        <script>
-            swal({
-            title: "Error",
-            text:  "{{session()->get('error')}}",
-            icon: "error",
-            button: "Tutup",
-            });
-        </script>
-    @endif
-    <br>
-    <form action="/adm/kelassAdd" method="get">
-            <button type="submit" class="btn btn-primary"><i class="fa fa-building" aria-hidden="true"></i> Tambah Kelas</button>
-    </form>
-    <br>
-    <br>
-    <main>
-        <div class="row">
+    .kelas-card.nonaktif {
+        background: #6c757d;
+        color: #fff;
+    }
+
+    .kelas-header {
+        padding: 14px 16px;
+        font-weight: 600;
+        font-size: 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .kelas-body {
+        padding: 16px;
+        font-size: 14px;
+    }
+
+    .kelas-footer {
+        padding: 14px 16px;
+        background: rgba(0,0,0,0.08);
+        display: grid;
+        gap: 8px;
+    }
+
+    .btn-flat {
+        border-radius: 3px;
+        font-size: 13px;
+        font-weight: 500;
+    }
+</style>
+
+{{-- ALERT --}}
+@if (session('message'))
+<script>
+    swal("Sukses", "{{ session('message') }}", "success");
+</script>
+@endif
+
+@if (session('delete'))
+<script>
+    swal("Sukses", "{{ session('delete') }}", "success");
+</script>
+@endif
+
+@if (session('error'))
+<script>
+    swal("Error", "{{ session('error') }}", "error");
+</script>
+@endif
+
+<div class="container-fluid mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-semibold">Data Kelas</h5>
+        <a href="/adm/kelassAdd" class="btn btn-primary btn-flat">
+            <i class="fa fa-plus"></i> Tambah Kelas
+        </a>
+    </div>
+
+    <div class="row g-3">
+
         @foreach ($DataKelas as $data)
-            
-      
-        <div class="col-xl-3 col-md-6">
-            @if ($data->StatusKelas == 'NonAktif')
-                 <div class="card bg-secondary text-white mb-4">
-                    
-                        
-            @else
-                      <div class="card bg-success text-white mb-4">   
-                    
-            @endif
-           
-                
-                <div class="card-body"><center>Kelas : {{$data->nama_kelas}} - Status {{ $data->StatusKelas }}</center></div>
-                <div class="card-body"><center>Wali Kelas : {{$data->Nama_wali}}</center></div>
-               
-                
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="/adm/tambahSiswaKelas/{{$data->id}}">Tambah Siswa</a>
-                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+            <div class="kelas-card 
+                {{ $data->StatusKelas == 'NonAktif' ? 'nonaktif' : 'aktif' }}">
+
+                <div class="kelas-header">
+                    Kelas {{ $data->nama_kelas }}
+                </div>
+
+                <div class="kelas-body">
+                    <div class="mb-1">
+                        <strong>Wali Kelas</strong>
+                    </div>
+                    <div>
+                        {{ $data->Nama_wali }}
+                    </div>
+
+                    <div class="mt-2">
+                        Status : 
+                        <strong>{{ $data->StatusKelas }}</strong>
+                    </div>
+                </div>
+
+                <div class="kelas-footer">
+
+                    <a href="/adm/tambahSiswaKelas/{{ $data->id }}"
+                       class="btn btn-light btn-flat">
+                        <i class="fa fa-user-plus"></i> Tambah Siswa
+                    </a>
+
+                    <a href="/adm/datasiswakelas/{{ $data->id }}"
+                       class="btn btn-warning btn-flat">
+                        <i class="fa fa-users"></i> Data Siswa
+                    </a>
+
+                    @if ($data->StatusKelas != 'NonAktif')
+                    <form action="/adm/nonaktifkanKelas" method="post">
+                        @csrf
+                        <input type="hidden" name="idkelas" value="{{ $data->id }}">
+                        <button type="submit"
+                                class="btn btn-danger btn-flat w-100">
+                            <i class="fa fa-ban"></i> Nonaktifkan
+                        </button>
+                    </form>
+                    @endif
+
                 </div>
             </div>
-            <div class="card-body d-flex gap-2">
-            <div class="card-body">
-                
-                <form action="/adm/datasiswakelas/{{$data->id}}" method="get">
-                    @csrf
-                    <button class = "btn btn-warning" type="submit" >
-                <center><i class = "fa fa-users"></i>Data Siswa</button></center></div>
-                </form>
-                @if ($data->StatusKelas == 'NonAktif')
-
-                    @else
-                    <form action="/adm/nonaktifkanKelas" method="get">
-                    @csrf
-                    <input type="text" hidden value="{{ $data->id }}">
-                    <button class = "btn btn-danger" type="submit" >
-                <center><i class = "fa fa-warning"></i>Nonaktifkan Kelas</button></center></div>
-                </form>
-
-                    @endif
         </div>
 
-        </div>
-        
-
-
-        </div>
-            
         @endforeach
+
     </div>
-      
-    
-  
 
-    
-</main>
 </div>
-</body>
-</html>
-
-  
 
 @endsection

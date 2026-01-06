@@ -75,7 +75,7 @@ Route::middleware(['auth'])->group(function(){
 
 
                 Route::controller(KelasController::class)->group(function(){
-                        route::get('/adm/dataskelas','index');
+                        route::get('/adm/dataskelas','index')->name('kelas');
                         route::get('/adm/kelassAdd','tambahdatakelas');
                         route::Post('/adm/proseskelas','addkelasproses');
                         route::get('/adm/tambahSiswaKelas/{id}','tambahsiswakeKelas');
@@ -83,6 +83,7 @@ Route::middleware(['auth'])->group(function(){
                         route::get('/adm/editkelas/{idkelas}','editkelasview');
                         route::post('/adm/proseseditkelas','proseseditkelas');
                         route::get('/adm/datasiswakelas/{id}','datasiswakelasview');
+                        route::post('/adm/nonaktifkanKelas','nonaktifkanKelas');
                         
                 });
 

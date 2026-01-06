@@ -189,4 +189,27 @@ class KelasController extends Controller
 
        
     }
+
+
+        /**
+         * Nonaktifkan kelas
+         *
+         * @param  \Illuminate\Http\Request  $req
+         * @return \Illuminate\Http\Response
+         */
+        
+    public function nonaktifkanKelas(Request $req){
+            $idkelas = $req->idkelas;
+            $status = "NonAktif";
+
+
+            $updatekelas = Modelkelas::find($idkelas);
+            $updatekelas->StatusKelas = $status;
+            $updatekelas->save();
+            return redirect()->route('kelas')->with('message','Nonaktif');
+
+
+    }
+
+            
 }
