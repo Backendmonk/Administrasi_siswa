@@ -43,8 +43,12 @@ class Sesicontroller extends Controller
             }
             else{
 
-                return redirect('')->withErrors('Username dan Password Salah')->withInput();
+                return redirect('/')->withErrors('Username dan Password Salah')->withInput();
             }
+        }else{
+
+                            return redirect('/')->withErrors('Akun Tidak Ada')->withInput();
+
         }
 
 

@@ -93,7 +93,7 @@
 
             <br>
             <button type="submit" class="btn btn-primary">Simpan</button>
-            <button type="button" onclick="window.location='/adm/datasiswa'" class="btn btn-primary" >Kembali</button>
+            <button type="button" onclick="window.location='/adm/dataskelas'" class="btn btn-primary" >Kembali</button>
           </form>
       
     

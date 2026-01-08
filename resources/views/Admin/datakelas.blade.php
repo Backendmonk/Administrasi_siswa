@@ -142,6 +142,7 @@
                                 class="btn btn-warning btn-flat w-100">
                             <i class="fa fa-ban"></i> Hapus
                         </button>
+                    </form>
 
                 </div>
             </div>
@@ -150,6 +151,7 @@
         @endforeach
 
     </div>
+</div>
 
 </div>
 

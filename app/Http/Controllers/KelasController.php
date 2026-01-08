@@ -155,40 +155,42 @@ class KelasController extends Controller
             }
         }
     }
+public function prosessiswakelas(Request $reqinputkelas) {
+    $nidn = $reqinputkelas->nidn;
+    $nama = $reqinputkelas->namasiswa;
+    $idkelas = $reqinputkelas->idkelas;
 
-    public function prosessiswakelas(request $reqinputkelas){
+    // 1. Cari apakah siswa sudah terdaftar sebelumnya
+    $siswaExist = ModelKelasSiswa::where('NIDN', $nidn)->first();
 
-        $nidn = $reqinputkelas->nidn;
-        $nama = $reqinputkelas->namasiswa;
-        $idkelas = $reqinputkelas->idkelas;
-        
-        $selectsiswa = ModelKelasSiswa::Where('NIDN','=',$nidn)->get()->count();
+    if ($siswaExist) {
+        $kelasLama = Modelkelas::where('id', $siswaExist->kode_kelas)->first();
 
-        if ($selectsiswa < 1) {
-            # code...
-            try {
-                $inputkelassiswa = New ModelKelasSiswa;
-
-                $inputkelassiswa->kode_kelas = $idkelas;
-                $inputkelassiswa->NIDN = $nidn;
-                $inputkelassiswa->nama_siswa = $nama;
-
-                $inputkelassiswa->save();
-                return redirect('/adm/tambahSiswaKelas/'.$idkelas)->with('message','Data Berhasil Ditambah');
-
-
-        
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error','Gagal Ditambah');
+        // 2. Jika kelas lamanya AKTIF, blokir pendaftaran
+        if ($kelasLama && $kelasLama->StatusKelas === "Aktif") {
+            return redirect()->back()->with('error', 'Siswa masih terdaftar di kelas yang Aktif!');
         }
-        }else{
-            return redirect()->back()->with('error','Data Siswa Sudah Memiliki Kelas');
-        }
-       
-       
-
-       
+        
+        // 3. Jika lolos (berarti kelas lama NonAktif), kita pakai data yang sudah ada untuk di-UPDATE
+        $inputkelassiswa = $siswaExist; 
+    } else {
+        // 4. Jika benar-benar siswa baru, buat baris BARU
+        $inputkelassiswa = new ModelKelasSiswa;
     }
+
+    try {
+        // Isi/Timpa data dengan yang baru
+        $inputkelassiswa->kode_kelas = $idkelas;
+        $inputkelassiswa->NIDN = $nidn;
+        $inputkelassiswa->nama_siswa = $nama;
+        $inputkelassiswa->save(); // Eloquent otomatis tahu ini UPDATE jika $siswaExist ditemukan, atau INSERT jika 'new'
+
+        return redirect('/adm/tambahSiswaKelas/'.$idkelas)->with('message', 'Data Berhasil Diperbarui/Ditambah');
+
+    } catch (\Throwable $th) {
+        return redirect()->back()->with('error', 'Gagal memproses data');
+    }
+}
 
 
         /**
