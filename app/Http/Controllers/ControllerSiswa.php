@@ -45,7 +45,14 @@ class ControllerSiswa extends Controller
         $pekerjaanortu = $reqfromsiswa->pekerjaanortu;
         $password = $NIDN;
 
-            try {
+        $ceknidn = ModelUserBaru::where('NIDN',$NIDN)->get()->count();
+
+        if ($ceknidn > 0) {
+            # code...
+         return redirect('/adm/siswabaru')->with('error','NIDN TIDAK BOLEH SAMA');
+
+        }else{
+             try {
                 //code...
 
                 $inputTbSiswa = NEW ModelUserBaru;
@@ -79,6 +86,10 @@ class ControllerSiswa extends Controller
             } catch (\Throwable $th) {
                 return redirect('/adm/siswabaru')->with('error','Data Gagal Ditambah');
             }
+
+        }
+
+           
                 
     }
 
