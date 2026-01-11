@@ -15,7 +15,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Absensi
                     </a>
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="/Guru/penilaianView">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Nilai
                     </a>

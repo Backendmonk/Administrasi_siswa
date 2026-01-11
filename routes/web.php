@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ControllerGuru;
+use App\Http\Controllers\ControllerGuruPenilaian;
 use App\Http\Controllers\ControllerMapel;
 use App\Http\Controllers\ControllerSiswa;
 use App\Http\Controllers\DataAdminController;
@@ -117,6 +118,14 @@ Route::middleware(['auth'])->group(function(){
                 //controller route funcion
                 Route::controller(DataGuruController::class)->group(function(){
                         Route::get('/Guru/index','index');                       
+                });
+
+
+                route::controller(ControllerGuruPenilaian::class)->group(function(){
+                        route::get('/Guru/penilaianView','penilaianView');
+                        route::get('/Guru/tambahNilai','tambahNilaiView');
+                        route::post('/Guru/tambahNilaimapel','tambahNilaimapel');
+                        route::post('/Guru/penilaianProses','penilaianProses');
                 });
         });
 
