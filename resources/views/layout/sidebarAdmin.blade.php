@@ -25,6 +25,11 @@
                         Data Guru
                     </a>
 
+                         <a class="nav-link" href="/adm/Mapel">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                        Data Mata Pelajaran
+                    </a>
+
 
                 </div>
             </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ControllerGuru;
+use App\Http\Controllers\ControllerMapel;
 use App\Http\Controllers\ControllerSiswa;
 use App\Http\Controllers\DataAdminController;
 use App\Http\Controllers\DataGuruController;
@@ -86,6 +87,13 @@ Route::middleware(['auth'])->group(function(){
                         route::post('/adm/nonaktifkanKelas','nonaktifkanKelas');
                         route::post('/adm/hapusKelas','HapusKelas');
                         
+                });
+
+                route::controller(ControllerMapel::class)->group(function(){
+                        route::get('/adm/Mapel','index')->name('mapel');
+                        route::get('/adm/MapelAddView','MapelAddView');
+                        route::post('/adm/MapelAddProses','MapelAddProses');
+                        route::get('/toolsAdmin/Mapel','toolsAdminMapel');
                 });
 
                 Route::controller(ControllerGuru::class)->group(function(){
