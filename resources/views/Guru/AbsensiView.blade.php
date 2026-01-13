@@ -118,12 +118,12 @@
                 <div class="kelas-footer">
                      @if ($data->StatusKelas != 'NonAktif')
                         
-                        <form action="/Guru/tambahNilai" method="get" >
+                        <form action="/Guru/tambahAbsensi" method="get" >
                             @csrf
                             <input type="text" hidden name = "id_kelas" value = "{{$data->id}}">
                             <button type="submit"
                                 class="btn btn-warning btn-flat">
-                                <i class="fa fa-user-plus"></i> Tambah Nilai
+                                <i class="fa fa-user-plus"></i> Tambah Absensi
 
                         </form>
                        
