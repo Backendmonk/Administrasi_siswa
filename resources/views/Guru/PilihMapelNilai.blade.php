@@ -64,45 +64,31 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>NIDN</th>
-                            <th>Nama</th>
+                            <th>Nama Mata Pelajaran</th>
+                           
                             <th>Tools</th>
                         </tr>
                     </thead>
                     <tbody>
                     
 
-                        @foreach ($id_kelas as $data)
+                        @foreach ($mapel as $data)
                             
                         <tr>
-                            <td>{{$data->NIDN}}</td>
-                            <td>{{$data->nama_siswa}}</td>    
+                            <td>{{$data->nama_pelajaran}}</td>
+                             
                             <td>
 
-                                <form action="/Guru/tambahNilaimapel" method = "POST">
+                                <form action="/Guru/forminputnilai" method = "POST">
                                     @csrf
-
-                                    <input name = "nidn" type="text" hidden value={{$data->NIDN}}>
+                                        
+                                    <input name = "id" type="text" hidden value={{$data->NIDN}}>
                                     <input type="text" name ="namasiswa" hidden value={{$data->nama_siswa}}>
-                                    <input type="text" name ="id_kelas" hidden value={{$id_kelas2->id}}>
-                                    <input type="text" name ="nama_kelas" hidden value={{$id_kelas2->nama_kelas}}>
                                     
 
                                     <button type="submit" class = "btn btn-primary"> <i class = "fa fa-plus"></i> Tambah Nilai</button>
                                 </form>
-                                <br>
-
-
-                                <form action="/Guru/lihatNilai" method = "POST">
-                                    @csrf
-
-                                    <input name = "nidn" type="text" hidden value={{$data->NIDN}}>
-                                    <input type="text" name ="namasiswa" hidden value={{$data->nama_siswa}}>
-                                    
-
-                                    <button type="submit" class = "btn btn-success"> <i class = "fa fa-eye"></i> Lihat Nilai</button>
-                                </form>
-                            
+        
                         </td>
                                             
                               

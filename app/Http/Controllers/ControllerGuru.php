@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model_Mapel;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -100,6 +101,8 @@ class ControllerGuru extends Controller
 
         return redirect('/adm/dataguru')->with('success','Akun Berhasil Diupdate');
     }
+
+
 
     
 }

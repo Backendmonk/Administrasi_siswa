@@ -105,6 +105,8 @@ Route::middleware(['auth'])->group(function(){
                         route::post('/adm/inputdataGuru','inputAkunGuru');
                         route::get('/toolsAdmin/Guru','manageGuruAccount');
                         route::post('/adm/inputdataGuruEdited','manageGuruAccountEdited');
+
+                        
                 });
 
         });
