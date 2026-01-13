@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('judul')
-    Kelola Penilaian
+    Kelola Absensi
 @endsection
 
 @section('isi')
@@ -18,7 +18,7 @@
     @endif
 <style>
 
-
+    
     .kelas-card {
         border: none;
         border-radius: 4px; /* kotak, sedikit saja */

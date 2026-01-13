@@ -132,6 +132,9 @@ Route::middleware(['auth'])->group(function(){
                         route::post('/Guru/forminputnilai','forminputnilai');
                         route::post('/Guru/prosesinputnilai','prosesinputnilai');
                         route::post('/Guru/lihatNilai','lihatNilai');
+
+
+                        route::get('/Guru/AbsensiView','AbsensiView');
                 });
         });
 

@@ -137,6 +137,22 @@ class ControllerGuruPenilaian extends Controller
 
      }
 
+
+
+     public function AbsensiView(Request $reqAbsensi){
+        //code lihat nilai
+        $idguru = Auth::user()->id;
+         $data = [
+
+            'DataKelas'=>Modelkelas::where('id_wali','=',$idguru)->orderby('id')->get(),
+        ];
+         
+       
+         return view('Guru.AbsensiView',$data);
+     
+
+     }
+
      
     
 

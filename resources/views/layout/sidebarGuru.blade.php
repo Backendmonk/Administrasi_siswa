@@ -11,7 +11,7 @@
                     </a>
                   
                     <div class="sb-sidenav-menu-heading">Addons</div>
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link" href="/Guru/AbsensiView">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Absensi
                     </a>
