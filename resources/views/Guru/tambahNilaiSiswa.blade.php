@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('judul')
-    Index Guru
+    Data Siswa
 @endsection
 
 @section('isi')
@@ -84,8 +84,8 @@
 
                                     <input name = "nidn" type="text" hidden value={{$data->NIDN}}>
                                     <input type="text" name ="namasiswa" hidden value={{$data->nama_siswa}}>
-                                    <input type="text" name ="id_kelas" hidden value={{$id_kelas2->id}}>
-                                    <input type="text" name ="nama_kelas" hidden value={{$id_kelas2->nama_kelas}}>
+                                    <input hidden type="text" name ="id_kelas"  value={{$id_kelas2->id}}>
+                                    <input hidden type="text" name ="nama_kelas"  value={{$id_kelas2->nama_kelas}}>
                                     
 
                                     <button type="submit" class = "btn btn-primary"> <i class = "fa fa-plus"></i> Tambah Nilai</button>
@@ -96,9 +96,10 @@
                                 <form action="/Guru/lihatNilai" method = "POST">
                                     @csrf
 
-                                    <input name = "nidn" type="text" hidden value={{$data->NIDN}}>
+                                     <input name = "nidn" type="text" hidden value={{$data->NIDN}}>
                                     <input type="text" name ="namasiswa" hidden value={{$data->nama_siswa}}>
-                                    
+                                    <input hidden type="text" name ="id_kelas"  value={{$id_kelas2->id}}>
+                                    <input hidden type="text" name ="nama_kelas"  value={{$id_kelas2->nama_kelas}}>
 
                                     <button type="submit" class = "btn btn-success"> <i class = "fa fa-eye"></i> Lihat Nilai</button>
                                 </form>

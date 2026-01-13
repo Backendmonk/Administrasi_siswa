@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('judul')
-    Index Guru
+   Pilih Mata Pelajaran
 @endsection
 
 @section('isi')
@@ -82,8 +82,14 @@
                                 <form action="/Guru/forminputnilai" method = "POST">
                                     @csrf
                                         
-                                    <input name = "id" type="text" hidden value={{$data->NIDN}}>
-                                    <input type="text" name ="namasiswa" hidden value={{$data->nama_siswa}}>
+                                    <input name = "id" type="text" hidden value="{{$nidn}}">
+                                    <input type="text" name ="namasiswa" hidden value="{{$namasiswa}}">
+                                    <input type="text" name ="id_kelas" hidden value="{{$id_kelas}}">
+                                    <input type="text" name ="nama_kelas" hidden value="{{$nama_kelas}}">
+                                    <input type="text" name ="mapel" hidden value="{{$data->nama_pelajaran}}">
+                                    <input type="text" hidden name ="id_mapel" value="{{$data->id}}">
+
+
                                     
 
                                     <button type="submit" class = "btn btn-primary"> <i class = "fa fa-plus"></i> Tambah Nilai</button>

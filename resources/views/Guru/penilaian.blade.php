@@ -6,8 +6,19 @@
 
 @section('isi')
     
-
+  @if (session()->has('success'))
+        <script>
+            swal({
+            title: "Sukses!",
+            text:  "{{session()->get('message')}}",
+            icon: "success",
+            button: "Tutup",
+            });
+        </script>
+    @endif
 <style>
+
+    
     .kelas-card {
         border: none;
         border-radius: 4px; /* kotak, sedikit saja */

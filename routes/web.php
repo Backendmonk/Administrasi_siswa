@@ -128,6 +128,10 @@ Route::middleware(['auth'])->group(function(){
                         route::get('/Guru/tambahNilai','tambahNilaiView');
                         route::post('/Guru/tambahNilaimapel','tambahNilaimapel');
                         route::post('/Guru/penilaianProses','penilaianProses');
+
+                        route::post('/Guru/forminputnilai','forminputnilai');
+                        route::post('/Guru/prosesinputnilai','prosesinputnilai');
+                        route::post('/Guru/lihatNilai','lihatNilai');
                 });
         });
 
