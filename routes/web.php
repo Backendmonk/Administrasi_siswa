@@ -156,7 +156,9 @@ Route::middleware(['auth'])->group(function(){
 
                 //controller route funcion
                 Route::controller(DataMuridConttroller::class)->group(function(){
-                        Route::get('/Murid/index','index');                       
+                        Route::get('/Murid/index','index');   
+                           route::get('/Murid/AbsensiView','AbsensiView');   
+                            route::get('/Murid/penilaianView','penilaianView');                 
                 });
         });
         

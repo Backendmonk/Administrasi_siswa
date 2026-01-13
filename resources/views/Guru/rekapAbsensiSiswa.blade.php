@@ -132,11 +132,11 @@
             </div>
         </div>
 
-        <div class="card-footer bg-white">
+        {{-- <div class="card-footer bg-white">
             <a href="{{ url()->previous() }}" class="btn btn-sm btn-outline-secondary">
                 <i class="fa fa-arrow-left me-1"></i> Kembali
             </a>
-        </div>
+        </div> --}}
     </div>
 
 
