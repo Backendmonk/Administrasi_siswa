@@ -120,7 +120,8 @@ Route::middleware(['auth'])->group(function(){
 
                 //controller route funcion
                 Route::controller(DataGuruController::class)->group(function(){
-                        Route::get('/Guru/index','index');                       
+                        Route::get('/Guru/index','index');  
+                                             
                 });
 
 
@@ -142,6 +143,9 @@ Route::middleware(['auth'])->group(function(){
                 route::controller(ControllerGuruAbsensi::class)->group(function(){
                         route::get('/Guru/AbsensiView','AbsensiView');
                         route::get('/Guru/tambahAbsensi','tambahAbsensi');
+                        route::get('/Guru/tambahabsensiview','tambahabsensiview');
+                        route::post('/Guru/prosesinputabsen','prosesinputabsen');
+                        route::post('/Guru/lihatrekapAbsensi','lihatrekapAbsensi');
 
                 });
         });
