@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ControllerGuru;
+use App\Http\Controllers\ControllerGuruAbsensi;
 use App\Http\Controllers\ControllerGuruPenilaian;
 use App\Http\Controllers\ControllerMapel;
 use App\Http\Controllers\ControllerSiswa;
@@ -134,7 +135,14 @@ Route::middleware(['auth'])->group(function(){
                         route::post('/Guru/lihatNilai','lihatNilai');
 
 
+                        
+                       
+                });
+
+                route::controller(ControllerGuruAbsensi::class)->group(function(){
                         route::get('/Guru/AbsensiView','AbsensiView');
+                        route::get('/Guru/tambahAbsensi','tambahAbsensi');
+
                 });
         });
 
