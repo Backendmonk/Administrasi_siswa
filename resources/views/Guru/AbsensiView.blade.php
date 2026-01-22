@@ -16,7 +16,19 @@
             });
         </script>
     @endif
+
+      @if (session()->has('error'))
+        <script>
+            swal({
+            title: "Gagal",
+            text:  "{{session()->get('message')}}",
+            icon: "error",
+            button: "Tutup",
+            });
+        </script>
+    @endif
 <style>
+    
 
     
     .kelas-card {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ControllerGuru;
+use App\Http\Controllers\ControllerGuruAbsensi;
 use App\Http\Controllers\ControllerGuruPenilaian;
 use App\Http\Controllers\ControllerMapel;
 use App\Http\Controllers\ControllerSiswa;
@@ -119,7 +120,8 @@ Route::middleware(['auth'])->group(function(){
 
                 //controller route funcion
                 Route::controller(DataGuruController::class)->group(function(){
-                        Route::get('/Guru/index','index');                       
+                        Route::get('/Guru/index','index');  
+                                             
                 });
 
 
@@ -134,7 +136,17 @@ Route::middleware(['auth'])->group(function(){
                         route::post('/Guru/lihatNilai','lihatNilai');
 
 
+                        
+                       
+                });
+
+                route::controller(ControllerGuruAbsensi::class)->group(function(){
                         route::get('/Guru/AbsensiView','AbsensiView');
+                        route::get('/Guru/tambahAbsensi','tambahAbsensi');
+                        route::POST('/Guru/tambahabsensiview','tambahabsensiview');
+                        route::post('/Guru/prosesinputabsen','prosesinputabsen');
+                        route::post('/Guru/lihatrekapAbsensi','lihatrekapAbsensi');
+
                 });
         });
 
@@ -144,7 +156,9 @@ Route::middleware(['auth'])->group(function(){
 
                 //controller route funcion
                 Route::controller(DataMuridConttroller::class)->group(function(){
-                        Route::get('/Murid/index','index');                       
+                        Route::get('/Murid/index','index');   
+                           route::get('/Murid/AbsensiView','AbsensiView');   
+                            route::get('/Murid/penilaianView','penilaianView');                 
                 });
         });
         
